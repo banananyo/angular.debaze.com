@@ -1,0 +1,18 @@
+.card-bg-image-lg{
+    width: 100%; 
+    object-fit: cover;
+    /*height: 380px;*/
+}
+
+.card-bg-image-md{
+    width: 100%; 
+    object-fit: cover;
+    height: 240px;
+}
+.absolute-bottom{
+    position: absolute; bottom: 0; width:100%;
+}
+
+.no-radius{
+    border-radius: 0;
+}

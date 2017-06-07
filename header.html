@@ -1,0 +1,59 @@
+<div class="container">
+<div class="row" style="padding-top: 15px; background-color: white; width: inherit; border-bottom: 1px solid rgba(0,0,0,.05)!important;">
+    <div class="row" style="padding-left:0; padding-right:0;">
+        <div class="col-lg-6" style="text-align: left;"><h5>{{$ctrl.htitle}}</h5>
+        </div>
+        <div class="col-lg-6" style="text-align: right;">
+            <!--<span  class="header-link green-light">-->
+                <form ng-show="(!tabSignInBox)&&(!tabSignUpBox)" id="signOptionBox" class="row green-light" style="height: 40px;">
+                    <div ng-show="loggedIn" class="col-lg-8" >{{userLoggedIn}}</div>
+                    <div ng-show="!loggedIn" class="offset-lg-4 col-lg-4 nopaddingLR"><a ng-click="toggleSignIn()" class="header-link">Sign in</a> / <a ng-click="toggleSignUp()" class="header-link">Sign up</a></div>
+                    <div class="col-lg-1 nopaddingLR">
+                        <md-icon aria-label="account_circle" class="material-icons" style="vertical-align:middle;">account_circle</md-icon>
+                    </div>
+                    <a ng-show="loggedIn" class="col-lg-2 header-link green-light" ng-click="signOut()" >Sign Out</a>
+                    <div class="col-lg-1 nopaddingLR">
+                        <md-icon aria-label="search" class="material-icons header-link gray-light" style="vertical-align:middle; margin-left:10px;">search</md-icon>
+                    </div>
+                </form>
+                <form ng-show="tabSignInBox"  id="signInBox" class="row green-light" style="height: 40px;" autocomplete="off">
+                    <div class="offset-lg-2 col-lg-3 nopaddingLR" style="padding-right: 5px;">
+                        <input type="text" id="userEmailInput" class="inputHead" placeholder="user email"/>
+                    </div>
+                    <div class="col-lg-3 nopaddingLR">
+                        <!--<input type="password" style="display:none">-->
+                        <input type="password" id="userPasswordInput" class="inputHead" placeholder="user password" autocomplete="new-password"/>
+                    </div>
+                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="signInByEmailAndPassword()" value="Sign In"/>
+                    <input class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="toggleSignIn()" value="hide" />
+                </form>
+                <form ng-show="tabSignUpBox"  id="signUpBox" class="row green-light" style="height: 40px;" autocomplete="off">
+                    <div class="offset-lg-2 col-lg-3 nopaddingLR" style="padding-right: 5px;">
+                        <input type="text" id="upUserEmailInput" class="inputHead" placeholder="user email"/>
+                    </div>
+                    <div class="col-lg-3 nopaddingLR">
+                        <input type="password" id="upUserPasswordInput1" class="inputHead" placeholder="user password" autocomplete="new-password"/>
+                    </div>
+                    <!--<div class="col-lg-3 nopaddingLR">
+                        <input type="password" id="upUserPasswordInput2" class="inputHead" placeholder="confirm password" autocomplete="new-password"/>
+                    </div>-->
+                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="signUpByEmailAndPassword()" value="Sign Up"/>
+                    <input class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="optionClose()" value="hide" />
+                </form>
+            <!--</span>-->
+            
+        </div>
+    </div>
+</div>
+<div class="row" style="background-color: white; width: inherit;">
+    <div class="col-lg-12" style="padding-top:5px;  padding-left:0; padding-right:0;">
+        <nav class="navbar navbar-light" style="background-color: none !important; padding-left:0; padding-right:0;">
+            <a class="header-link gray-light" href="#/home">home</a><span class="gap"></span>
+            <a class="header-link gray-light" href="#/music">musics</a><span class="gap"></span>
+            <a class="header-link gray-light" href="#/gallery">gallery</a><span class="gap"></span>
+            <a class="header-link gray-light" href="{{getCurrentDate()}}">income history</a><span class="gap"></span>
+            <a class="header-link gray-light" href="#/contact">contact</a><span class="gap"></span>
+        </nav>
+    </div>
+</div>
+</div>

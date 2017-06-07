@@ -1,0 +1,145 @@
+.header-link{
+    transition: .5s;
+}
+
+.header-link:hover{
+    cursor: pointer !important;
+}
+
+.green-light{
+    color: rgb(0,200,150) !important;
+}
+
+.green-light:hover{
+    color: rgb(0,150,100) !important;
+}
+
+.green-light-active{
+    color: rgb(0,150,100) !important;
+}
+
+.gray-light{
+    color: rgb(160,160,160) !important;
+}
+
+.gray-light:hover{
+    color: rgb(80,80,80) !important;
+}
+
+.gray-light-active{
+    color: rgb(80,80,80) !important;
+}
+
+.gap{
+    margin-left: 15px;
+}
+
+.header-fixed-top{
+    width: calc(100vw);
+    z-index: 199;
+    position: fixed;
+    /*-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+    /*margin-left: 15px;
+    margin-right: 25px;*/
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.05)!important;
+}
+.chide{
+  /* These are just alternative ways of hiding an element */
+  opacity:0;
+}
+.nopaddingLR{
+    padding-left: 0;
+    padding-right: 0;
+}
+.buttonHead{
+    border: none;
+    background-color: unset;
+    text-align: center;
+    /*padding-left: 2px;
+    padding-right: 2px;*/
+    height: 100%;
+    display: inline-block;
+    transition: 0.5s;
+}
+.buttonHead:hover{
+    border-bottom: 5px solid rgba(0,150,100,.5);
+    cursor: pointer;
+}
+.inputHead{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgba(0,150,100,.8);
+}
+/*@media (min-width: 1200px){
+    .header-fixed-top {
+        z-index: 999;
+        position: fixed;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-bottom: 1px solid rgba(0,0,0,.05)!important;
+        width: 1140px;
+        max-width: 100%;
+    }
+}
+@media (min-width: 992px){
+    .header-fixed-top {
+        z-index: 999;
+        position: fixed;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-bottom: 1px solid rgba(0,0,0,.05)!important;
+        width: 960px;
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px){
+    .header-fixed-top {
+        z-index: 999;
+        position: fixed;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-bottom: 1px solid rgba(0,0,0,.05)!important;
+        width: 720px;
+        max-width: 100%;
+    }
+}
+@media (min-width: 576px){
+    .header-fixed-top {
+        z-index: 999;
+        position: fixed;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-bottom: 1px solid rgba(0,0,0,.05)!important;
+        width: 540px;
+        max-width: 100%;
+    }
+}*/
