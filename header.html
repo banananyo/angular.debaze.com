@@ -5,13 +5,20 @@
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <!--<span  class="header-link green-light">-->
-                <form ng-show="(!tabSignInBox)&&(!tabSignUpBox)" id="signOptionBox" class="row green-light" style="height: 40px;">
+                <form ng-show="(!tabSignInBox)&&(!tabSignUpBox)" id="signOptionBox" class="row" style="height: 40px;">
                     <div ng-show="loggedIn" class="col-lg-8" >{{userLoggedIn}}</div>
-                    <div ng-show="!loggedIn" class="offset-lg-4 col-lg-4 nopaddingLR"><a ng-click="toggleSignIn()" class="header-link">Sign in</a> / <a ng-click="toggleSignUp()" class="header-link">Sign up</a></div>
+                    <div ng-show="!loggedIn" class="offset-lg-6 col-lg-2 nopaddingLR">
+                        <input type="button" ng-click="toggleSignIn()" class="header-link buttonHead green-light" value="Sign in"/>
+                    </div>
+                    <div ng-show="!loggedIn" class="col-lg-2 nopaddingLR">
+                        <input type="button" ng-click="toggleSignUp()" class="header-link buttonHead green-light" value="Sign up" />
+                    </div>
                     <div class="col-lg-1 nopaddingLR">
                         <md-icon aria-label="account_circle" class="material-icons" style="vertical-align:middle;">account_circle</md-icon>
                     </div>
-                    <a ng-show="loggedIn" class="col-lg-2 header-link green-light" ng-click="signOut()" >Sign Out</a>
+                    <div class="col-lg-2 nopaddingLR" ng-show="loggedIn">
+                        <input type="button" class="header-link green-light buttonHead" ng-click="signOut()" value="Sign Out" />
+                    </div>
                     <div class="col-lg-1 nopaddingLR">
                         <md-icon aria-label="search" class="material-icons header-link gray-light" style="vertical-align:middle; margin-left:10px;">search</md-icon>
                     </div>
