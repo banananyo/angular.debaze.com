@@ -1,4 +1,5 @@
 .header-link{
+    font-size: 14px;
     transition: .5s;
 }
 
@@ -30,6 +31,14 @@
     color: rgb(80,80,80) !important;
 }
 
+.blue-light{
+    color: rgb(0,120,200) !important;
+}
+
+.blue-light:hover{
+    color: rgb(0,100,150) !important;
+}
+
 .gap{
     margin-left: 15px;
 }
@@ -57,6 +66,7 @@
     padding-right: 0;
 }
 .buttonHead{
+    outline: none;
     border: none;
     background-color: unset;
     text-align: center;
@@ -71,12 +81,36 @@
     -o-transition: border-color 0.5s ease;
     -ms-transition: border-color 0.5s ease;
     transition: border-color 0.5s ease;  
-    border-bottom: 2px solid rgba(255,255,255,0);
+    
 }
 .buttonHead:hover{
-    border-bottom: 2px solid rgba(0,150,100,.5);
+    
     /*text-decoration: underline;*/
     cursor: pointer;
+}
+
+.green-underline{
+    border-bottom: 2px solid rgba(255,255,255,0);
+}
+
+.green-underline:hover{
+    border-bottom: 2px solid rgba(0,150,100,1);
+}
+
+.blue-underline{
+    border-bottom: 2px solid rgba(0,120,200,0);
+}
+
+.blue-underline:hover{
+    border-bottom: 2px solid rgba(0,100,150,1);
+}
+
+.gray-underline{
+    border-bottom: 2px solid rgba(160,160,160,0);
+}
+
+.gray-underline:hover{
+    border-bottom: 2px solid rgba(80,80,80,1);
 }
 .inputHead{
     display: inline-block;

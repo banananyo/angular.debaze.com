@@ -10,7 +10,7 @@
         <script src="script/angular.min.js"></script>
         <script src="script/angular-route.js"></script>
         <!--<script src="script/angular-animate.js"></script>-->
-        <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+        <script src="script/firebase.js"></script>
         <script src="script/app.js"></script>
         <script src="script/components/header.component.js"></script>
         <script src="script/components/slider.component.js"></script>
@@ -19,6 +19,7 @@
         <script src="script/components/music.component.js"></script>
         <script src="script/components/income.component.js"></script>
         <script src="script/components/contact.component.js"></script>
+    
         <!--<script src="script/script-import.js"></script>-->
         <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>-->
         
@@ -47,37 +48,44 @@
                 <ng-view></ng-view>
             </div>
         </div>
-        <!--<div class="container" ng-app="debazeApp" >
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>{{name}}</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <input type="text" class="form-control" ng-model="name" value="Welcome"/>
-                </div>
-            </div>
-            <div class="row" ng-controller="IndexController">
-                <div class="col-lg-12">
-                    <ul>
-                        <li ng-repeat="p in peoples">
-                        <span>{{p.name}}</span>
-                        <p>{{p.age}}</p>
-                        </li>
-                    </ul>
-                </div>
-                <button ng-click="getConfig()">x</button>
-            </div>
-            <div class="row" ng-controller="GreetingController as gc">
-                <div class="col-lg-12">
-                    <input type="text" ng-model="gc.title"/>
-                    <p>{{greet}}</p>
-                    <div>
-                        <main-header title="gc.title"></main-header>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+        <!--<input type="button"id="test" value="status"/>
+        
+        <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+        </fb:login-button>-->
+
+        
     </body>
+    <!--<script>
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '119025982017290',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();   
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $('#test').click(function(){
+            FB.getLoginStatus(function(response) {
+                console.log(response);
+            });
+        });
+
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                console.log(response);
+            });
+        }
+    </script>-->
 </html>

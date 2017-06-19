@@ -1,16 +1,13 @@
-IncomeController = function($scope, $sce, $location, $timeout){
+IncomeController = function($scope, $sce, $location, $timeout, $routeParams){
     var ctrl = this;
     this.title = 'incomeeeee';
+    $scope.isLogin=false;
     $scope.isLoading=true;
     $scope.imgSrc = {
         datePickIcon: $sce.trustAsResourceUrl('resources/icon/datePick32.png'),
-    }
+    };
     $scope.firebaseObject=null;
-    if($location.search()==null){
-        $scope.dateToFetch=null;
-    }else{
-        $scope.dateToFetch=$location.search();
-    }
+    $scope.dateToFetch = ($routeParams===null) ? null : $routeParams;
     // $.getJSON('config/config.json',{
         // async: false
     // }).done(function(json){
@@ -22,16 +19,8 @@ IncomeController = function($scope, $sce, $location, $timeout){
     // var config = function(json){
     //     appUrl=json.appUrl;
     // };
-    // var innerOnload = function(outer,loadingBox){
-    //     loadingBox.html("loading...");
-    //     outer.show();
-    // }
-    // var innerLoaded = function(outer,loadingBox){
-        // loadingBox.html("");
-        // outer.hide();
-    // }
+
     $(document).ready(function(){
-        // innerOnload($('#outer_loading_box'),$('#loading_box'));
         $( "#income_date_field, #dateToFetchInput" ).datepicker({
             dateFormat: "yy/mm/dd",
             showOtherMonths: true,
@@ -46,14 +35,11 @@ IncomeController = function($scope, $sce, $location, $timeout){
         });
     });
     $scope.isDateNull = function(){
-        if($scope.dateToFetch=null){
-            return true;
-        }else{
-            return false;
-        }
+        // return !!($scope.dateToFetch = null);
+        return !($scope.dateToFetch === null);
     };
     $scope.getDateString = function(){
-        if($scope.dateToFetch!=null){
+        if($scope.dateToFetch!==null){
             return dateObjectToString($scope.dateToFetch);
         }
         return "select date...";
@@ -62,34 +48,29 @@ IncomeController = function($scope, $sce, $location, $timeout){
         return (obj.y+'/'+obj.m+'/'+obj.d);
     };
     var dateStringToObject = function(str){
-        var s = str.split('/');
-        var obj = {
+        var s = (str+'').split('/');
+        return {
             y:s[0],
             m:s[1],
             d:s[2]
         };
-        return obj;
     };
     var callbackFirebase = function(snapshot){
-        if($scope.dateToFetch!=null){
+        if($scope.dateToFetch!==null){
             // console.log(snapshot.val());
             var obj={};
             obj[snapshot.key] = snapshot.val();
             // console.log(obj);
             $timeout(function() {
                 $scope.$apply(function(){
-                    $scope.isLoading=false;
+                    $scope.isLoading = false;
                     $scope.firebaseObject = obj;
                 });
             }, 0);
         }
-        
+
     };
-    // const auth = firebase.auth();
-    // var email = "wazjakorn@gmail.com";
-    // var password = "baze_8514";
-    // const promise = auth.signInWithEmailAndPassword(email, password);
-    // promise.catch(e => console.log(e.message));
+
     firebase.database().ref('income').on("child_changed", function(snapshot) {
         console.log('event: child_changed');
         callbackFirebase(snapshot);
@@ -104,22 +85,22 @@ IncomeController = function($scope, $sce, $location, $timeout){
     });
 
     var notEmpty = function(variable){
-        if(variable==null || variable==undefined || variable.length==0 || variable==''){
-            return false;
-        }
-        return true;
+        return (variable!==null && variable!==undefined && variable.length!==0 && variable!=='');
     };
-    
+
     //#formInsertIncome
     var insertIncome = function(){
         // A post entry.
+        var money = $('#income_money_field').val();
+        var topic = $('#income_topic_field').val();
+        var type = $('#income_type_field').val();
         var postData = {
-          money: $('#income_money_field').val(),
-          topic: $('#income_topic_field').val(),
-          type: $('#income_type_field').val()
+          money: money,
+          topic: topic,
+          type: type
         };
 
-        if(notEmpty($('#income_money_field').val())&&notEmpty($('#income_topic_field').val())&&notEmpty($('#income_type_field').val())){
+        if(notEmpty(money)&&notEmpty(type)&&notEmpty(topic)){
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('income/'+$('#income_date_filed').val()).push().key;
 
@@ -133,27 +114,46 @@ IncomeController = function($scope, $sce, $location, $timeout){
             console.log('have insert empty filed');
             alert('empty field');
         }
-    }
+    };
+
+    var refreshPage = function(dayParams){
+        $scope.$apply($location.path('/income/'+dayParams.y+'/'+dayParams.m+'/'+dayParams.d).replace());
+    };
 
     $('#insertBut').click(function(){
       var promise = insertIncome();
       if(promise){
         promise.then(function(){
-            // window.location.reload();income_date_field
-            var dateObj = dateStringToObject($('#income_date_field').val());
-            $scope.$apply($location.path('/income').search({y: dateObj.y, m:dateObj.m, d:dateObj.d}).replace());
+            // var dateObj = dateStringToObject($('#income_date_field').val());
+            // $scope.$apply($location.path('/income/'+$scope.dateToFetch.y+'/'+$scope.dateToFetch.m+'/'+$scope.dateToFetch.d).replace());
+            // refreshPage($scope.dateToFetch);
         });
       }
     });
 
     $('#submitDate').submit(function(e){
         e.preventDefault();
-        $timeout(function() {
-            $scope.dateToFetch=dateStringToObject($('#dateToFetchInput').val());
-            $scope.$apply($location.path('/income').search({y: $scope.dateToFetch.y, m:$scope.dateToFetch.m, d:$scope.dateToFetch.d}).replace());
-        }, 0);
+        // $timeout(function() {
+            // $scope.dateToFetch=dateStringToObject($('#dateToFetchInput').val());
+            // $scope.$apply($location.path('/income').search({y: $scope.dateToFetch.y, m:$scope.dateToFetch.m, d:$scope.dateToFetch.d}).replace());
+            refreshPage(dateStringToObject($('#dateToFetchInput').val()));
+        // }, 0);
         // var path = 'http://' + window.location.hostname + window.location.pathname+'#/income';
         // window.location.replace(path+'?y=2560&m=05&d=23');
+    });
+
+
+
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+      if(firebaseUser){
+        $scope.$apply(function(){
+            $scope.isLogin=true;
+        });
+      }else{
+        $scope.$apply(function(){
+            $scope.isLogin=false;
+        });
+      }
     });
 };
 

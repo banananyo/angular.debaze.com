@@ -5,25 +5,31 @@
         </div>
         <div class="col-lg-6" style="text-align: right;">
             <!--<span  class="header-link green-light">-->
-                <form ng-show="(!tabSignInBox)&&(!tabSignUpBox)" id="signOptionBox" class="row" style="height: 40px;">
-                    <div ng-show="loggedIn" class="col-lg-8" >{{userLoggedIn}}</div>
-                    <div ng-show="!loggedIn" class="offset-lg-6 col-lg-2 nopaddingLR">
-                        <input type="button" ng-click="toggleSignIn()" class="header-link buttonHead green-light" value="Sign in"/>
+                <form ng-show="(!tabSignInBox)&&(!tabSignUpBox)" id="signOptionBox" class="row" style="height: 40px; text-align: center;">
+                    <div ng-show="loggedIn" class="col-lg-7 green-light" style="text-align: right;">{{userLoggedIn.email}}</div>
+                    <div ng-show="!loggedIn" class="offset-lg-3 col-lg-2 nopaddingLR">
+                        <input type="button" ng-click="facebook_login()" class="header-link buttonHead blue-light blue-underline nopaddingLR" value="Facebook"/>
                     </div>
-                    <div ng-show="!loggedIn" class="col-lg-2 nopaddingLR">
-                        <input type="button" ng-click="toggleSignUp()" class="header-link buttonHead green-light" value="Sign up" />
+                    <div ng-show="!loggedIn" class="col-lg-1 nopaddingLR">
+                        <input type="button" ng-click="toggleSignIn()" class="header-link buttonHead green-light green-underline nopaddingLR" value="E-Mail"/>
+                    </div>
+                    <div ng-show="!loggedIn" class="col-lg-3 nopaddingLR">
+                        <input type="button" ng-click="toggleSignUp()" class="header-link buttonHead green-light green-underline nopaddingLR" value="Create Account" />
                     </div>
                     <div class="col-lg-1 nopaddingLR">
-                        <md-icon aria-label="account_circle" class="material-icons" style="vertical-align:middle;">account_circle</md-icon>
+                        <md-icon ng-if="(!loggedIn)" aria-label="account_circle" class="material-icons" style="vertical-align:middle;">account_circle</md-icon>
+                        <input type="button" ng-if="avartar"  ng-click="log()" value="sss" />
                     </div>
                     <div class="col-lg-2 nopaddingLR" ng-show="loggedIn">
-                        <input type="button" class="header-link green-light buttonHead" ng-click="signOut()" value="Sign Out" />
+                        <input  type="button" class="header-link green-light buttonHead green-underline" ng-click="signOut()" value="Log Out" />
                     </div>
-                    <div class="col-lg-1 nopaddingLR">
-                        <md-icon aria-label="search" class="material-icons header-link gray-light" style="vertical-align:middle; margin-left:10px;">search</md-icon>
+                    <div class="col-lg-2 ">
+                        <button class="btn btn-secondary" style="padding-top: 4px; padding-bottom: 4px; width: 100%;">
+                            <md-icon aria-label="search" class="material-icons" style="vertical-align:middle;">search</md-icon>
+                        </button>
                     </div>
                 </form>
-                <form ng-show="tabSignInBox"  id="signInBox" class="row green-light" style="height: 40px;" autocomplete="off">
+                <form ng-show="tabSignInBox"  id="signInBox" class="row green-light" style="height: 40px; text-align: center;" autocomplete="off">
                     <div class="offset-lg-2 col-lg-3 nopaddingLR" style="padding-right: 5px;">
                         <input type="text" id="userEmailInput" class="inputHead" placeholder="user email"/>
                     </div>
@@ -31,10 +37,10 @@
                         <!--<input type="password" style="display:none">-->
                         <input type="password" id="userPasswordInput" class="inputHead" placeholder="user password" autocomplete="new-password"/>
                     </div>
-                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="signInByEmailAndPassword()" value="Sign In"/>
-                    <input class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="toggleSignIn()" value="hide" />
+                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light green-underline" ng-click="signInByEmailAndPassword()" value="Log In"/>
+                    <input class="col-lg-2 nopaddingLR buttonHead green-light green-underline" ng-click="toggleSignIn()" value="hide" />
                 </form>
-                <form ng-show="tabSignUpBox"  id="signUpBox" class="row green-light" style="height: 40px;" autocomplete="off">
+                <form ng-show="tabSignUpBox"  id="signUpBox" class="row green-light" style="height: 40px; text-align: center;" autocomplete="off">
                     <div class="offset-lg-2 col-lg-3 nopaddingLR" style="padding-right: 5px;">
                         <input type="text" id="upUserEmailInput" class="inputHead" placeholder="user email"/>
                     </div>
@@ -44,8 +50,8 @@
                     <!--<div class="col-lg-3 nopaddingLR">
                         <input type="password" id="upUserPasswordInput2" class="inputHead" placeholder="confirm password" autocomplete="new-password"/>
                     </div>-->
-                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="signUpByEmailAndPassword()" value="Sign Up"/>
-                    <input class="col-lg-2 nopaddingLR buttonHead green-light" ng-click="optionClose()" value="hide" />
+                    <input type="submit" class="col-lg-2 nopaddingLR buttonHead green-light green-underline" ng-click="signUpByEmailAndPassword()" value="Register"/>
+                    <input class="col-lg-2 nopaddingLR buttonHead green-light green-underline" ng-click="optionClose()" value="hide" />
                 </form>
             <!--</span>-->
             
@@ -55,11 +61,13 @@
 <div class="row" style="background-color: white; width: inherit;">
     <div class="col-lg-12" style="padding-top:5px;  padding-left:0; padding-right:0;">
         <nav class="navbar navbar-light" style="background-color: none !important; padding-left:0; padding-right:0;">
-            <a class="header-link gray-light" href="#/home">home</a><span class="gap"></span>
-            <a class="header-link gray-light" href="#/music">musics</a><span class="gap"></span>
-            <a class="header-link gray-light" href="#/gallery">gallery</a><span class="gap"></span>
-            <a class="header-link gray-light" href="{{getCurrentDate()}}">income history</a><span class="gap"></span>
-            <a class="header-link gray-light" href="#/contact">contact</a><span class="gap"></span>
+            <a class="header-link gray-light" ng-href="#/home">home</a><span class="gap"></span>
+            <a class="header-link gray-light" ng-href="#/music">musics</a><span class="gap"></span>
+            <a class="header-link gray-light" ng-href="#/gallery">gallery</a><span class="gap"></span>
+            <a class="header-link gray-light" ng-href="{{getCurrentDate()}}">income history</a><span class="gap"></span>
+            <a class="header-link gray-light" ng-href="#/contact">contact</a><span class="gap"></span>
+            <!--<a class="header-link gray-light" ng-click="facebook_login()">facebook_login</a><span class="gap"></span>-->
+            <!--<a class="header-link gray-light" ng-click="facebook_logout()">facebook_logout</a><span class="gap"></span>-->
         </nav>
     </div>
 </div>

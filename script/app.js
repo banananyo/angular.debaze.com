@@ -22,7 +22,7 @@ debazeApp.config(['$sceDelegateProvider','$routeProvider', '$locationProvider', 
     .when('/music', {
         template: '<music></music>'
     })
-    .when('/income', {
+    .when('/income/:y/:m/:d', {
         template: '<income></income>'
     })
     .when('/contact', {
@@ -31,7 +31,7 @@ debazeApp.config(['$sceDelegateProvider','$routeProvider', '$locationProvider', 
     .when('/', {
         redirectTo: '/home'
     })
-    // .otherwise('/home');
+    .otherwise('/home');
 
     // Initialize Firebase
     var config = {
@@ -73,7 +73,17 @@ debazeApp.config(['$sceDelegateProvider','$routeProvider', '$locationProvider', 
         }).then(function(response){
             console.log(response.data.post);
         });
-    }
+    };
+
+    // $window.fbAsyncInit = function() {
+    //     FB.init({ 
+    //     appId: '{your-app-id}',
+    //     status: true, 
+    //     cookie: true, 
+    //     xfbml: true,
+    //     version: 'v2.4'
+    //     });
+    // };
 
     // var appUrl, res;
     // $.getJSON('config/config.json',{
@@ -102,5 +112,4 @@ debazeApp.config(['$sceDelegateProvider','$routeProvider', '$locationProvider', 
     // $(document).ready(function(){
     //     getAll();
     // });
-    
 }]);

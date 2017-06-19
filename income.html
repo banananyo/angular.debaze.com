@@ -61,18 +61,19 @@
                     </tr>
                 </tbody>-->
                 <tbody id="tbody_income" >
-                    <tr ng-repeat="o in firebaseObject[dateToFetch.y][dateToFetch.m][dateToFetch.d]">
+                    <tr ng-if="(isLogin)" ng-repeat="o in firebaseObject[dateToFetch.y][dateToFetch.m][dateToFetch.d]">
                         <!--<td>-</td>-->
                         <!--<td>-</td>-->
                         <!--<td>{{o.type}}</td>-->
                         <td>{{o.topic}}</td>
                         <td>{{o.money}}</td>
                     </tr>
-                    <tr ng-if="(!firebaseObject[dateToFetch.y][dateToFetch.m][dateToFetch.d])&&(!isLoading)">
-                        <td colspan="5" style="text-align:center;color:red;">no record found in this day.</td>
+                    <tr ng-if="(!isLogin)">
+                        <td colspan="5" style="text-align:center;color:red;">please login...</td>
                     </tr>
-                    <tr ng-if="(!firebaseObject[dateToFetch.y][dateToFetch.m][dateToFetch.d])&&(isLoading)">
-                        <td colspan="4" id="loading_box" style="text-align:center;color:red;">loading...</td>
+                    <tr ng-if="(isLogin)">
+                        <td ng-if="(isLoading)" colspan="5" style="text-align:center;color:red;">loading...</td>
+                        <td ng-if="(!firebaseObject[dateToFetch.y][dateToFetch.m][dateToFetch.d])&&(!isLoading)" colspan="5" style="text-align:center;color:red;">no record found in this day.</td>
                     </tr>
                 </tbody>
             </table>
