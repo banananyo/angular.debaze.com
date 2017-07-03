@@ -39,6 +39,14 @@
     color: rgb(0,100,150) !important;
 }
 
+.orange-light{
+    color: rgb(255,40,20) !important;
+}
+
+.orange-light:hover{
+    color: rgb(200,30,10) !important;
+}
+
 .gap{
     margin-left: 15px;
 }
@@ -76,11 +84,11 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    -webkit-transition: border-color 0.5s ease;
-    -moz-transition: border-color 0.5s ease;
-    -o-transition: border-color 0.5s ease;
-    -ms-transition: border-color 0.5s ease;
-    transition: border-color 0.5s ease;  
+    -webkit-transition:  0.5s ease;
+    -moz-transition: 0.5s ease;
+    -o-transition:  0.5s ease;
+    -ms-transition: 0.5s ease;
+    transition:  0.5s ease;  
     
 }
 .buttonHead:hover{
@@ -91,6 +99,7 @@
 
 .green-underline{
     border-bottom: 2px solid rgba(255,255,255,0);
+    text-decoration: none !important;
 }
 
 .green-underline:hover{
@@ -99,6 +108,7 @@
 
 .blue-underline{
     border-bottom: 2px solid rgba(0,120,200,0);
+    text-decoration: none !important;
 }
 
 .blue-underline:hover{
@@ -107,6 +117,7 @@
 
 .gray-underline{
     border-bottom: 2px solid rgba(160,160,160,0);
+    text-decoration: none !important;
 }
 
 .gray-underline:hover{
@@ -119,11 +130,11 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    -webkit-transition: border-color 0.5s ease;
-    -moz-transition: border-color 0.5s ease;
-    -o-transition: border-color 0.5s ease;
-    -ms-transition: border-color 0.5s ease;
-    transition: border-color 0.5s ease; 
+    -webkit-transition: 0.5s ease;
+    -moz-transition:  0.5s ease;
+    -o-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    transition:  0.5s ease; 
     border-bottom: 2px solid rgba(255,255,255,0);
 }
 .inputHead:focus{
