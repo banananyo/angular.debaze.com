@@ -19,9 +19,9 @@ debazeApp.config(['$sceDelegateProvider','$routeProvider', '$locationProvider', 
     .when('/gallery', {
         template: '<card-column></card-column>'
     })
-    .when('/music', {
-        template: '<music></music>'
-    })
+    // .when('/music', {
+    //     template: '<music></music>'
+    // })
     .when('/income/:y/:m/:d', {
         template: '<income></income>'
     })
